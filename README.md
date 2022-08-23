@@ -1,4 +1,3 @@
-README
 This is the official codebase for our 2022 HCOMP paper:
 
 # Eliciting and Learning with Soft Labels from Every Annotator

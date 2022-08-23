@@ -17,7 +17,13 @@ The labels used to train machine learning (ML) models are of paramount importanc
 
 ## Repository Details 
 
-The `CIFAR-10S` dataset is included in the `data` directory.
+### Data
+
+The `CIFAR-10S` dataset is included in the `cifar10s_data` directory. Details are included in the README in the directory.
+
+We download the `CIFAR-10H` data from the authors' fantastic [repository](https://github.com/jcpeterson/cifar-10h). 
+
+### Experimental Data
 
 Code to run the experiments included in the paper will be added shortly.
 

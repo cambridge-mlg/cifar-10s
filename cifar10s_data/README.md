@@ -4,8 +4,8 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 
 ## Repository Contents
 
-* `human_soft_label_data.json`: .... 
-* `raw_data.zip`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
+* `human_soft_label_data.json`: parsed soft label elicitation data for all annotators. 
+* `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
 * `soft_labels_redist_01.npy`: ..... redist 0.1
 * `label_construction_utils.py`: .... 
 * We will include a custom dataloader shortly. For the time being, we recommend... 
@@ -13,6 +13,11 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 ## Constructing Soft Labels
 
 We recommend...... 
+
+Format of `human_soft_label_data.json` is a dictionary where: 
+* Keys are the example/image indexes (based on the ordered [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html)).
+* Values are annotators' processed soft label information for said example, in a list.
+* An individual annotator's information itself is a dictionary, with keys: "Most Probable Class", "Most Probable Class Prob", "Second Most Probable Class", "Second Most Probable Class Prob", "Impossible Class(es)"
 
 ## Raw Data Format
 

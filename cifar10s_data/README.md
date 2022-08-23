@@ -4,8 +4,8 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 
 ## Repository Contents
 
-* `human_soft_label_data.json`: .... 
-* `raw_data.zip`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](). [Pavlovia]() was used as a backend. Details on column information are included below. 
+* `human_soft_label_data.json`: parsed soft label elicitation data for all annotators. 
+* `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
 * `soft_labels_redist_01.npy`: ..... redist 0.1
 * `label_construction_utils.py`: .... 
 * We will include a custom dataloader shortly. For the time being, we recommend... 
@@ -14,9 +14,26 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 
 We recommend...... 
 
+Format of `human_soft_label_data.json` is a dictionary where: 
+* Keys are the example/image indexes (based on the ordered [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html)).
+* Values are annotators' processed soft label information for said example, in a list.
+* An individual annotator's information itself is a dictionary, with keys: "Most Probable Class", "Most Probable Class Prob", "Second Most Probable Class", "Second Most Probable Class Prob", "Impossible Class(es)"
+
 ## Raw Data Format
 
 The columns in our raw_data represent: 
+* subject: unique id randomly generated for a given annotator.
+* response: annotations provided for a given image (most prob class w/ prob, second prob class w/ optional prob, any impossible classes). note, the final page shown to each annotator was a debrief questionarre; for this page, you can see comments to the questions included below. 
+* img_id: integer into the original CIFAR-10 ordered test set for the image show.
+* label: category assigned to the image according to the [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html).
+* filename: readable tag for image shown: "cifar10_train_{img_id}_{img_label}.png" note, these are from the "test" set. we called these "train" because we were training on the labels, but will soon change this tag, and downstream code which uses the filename, to avoid confusion. 
+* rt: time spent (msec) on a given page, by an annotator.
+* time_elapsed: total time (msec) an annotator has taken on the experiment so far.
+* task: indicates the type of the screen shown to the annotator. "spec conf" is the soft label elicitation; "rerun_spec_conf" are repeat trials of earlier soft label elicitations (same screen type). 
+* trial_index: the order of the trials/pages the annotator saw.
+* condition: batch of images annotator was allocated to.
+* trial_type: the [jsPsych](https://www.jspsych.org/6.3/) screen-type shown on a given page.
+* view_history: meta-data on annotator viewing instructions.
 
 
 

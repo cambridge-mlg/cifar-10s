@@ -5,11 +5,12 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 ## Repository Contents
 
 * `human_soft_label_data.json`: parsed soft label elicitation data for all annotators. 
-* * `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
+* `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
 * `cifar10s_t2clamp_redist10.json`: soft labels per individual annotator, and per example, of the `T2 Clamp` variety. Constructed with 10% redistribution.
 * `construct_labels.ipynb`: example script to construct soft labels from elicited information. 
 * `label_construction_utils.py`: helper functions to construct soft labels.
 * We will include a custom dataloader shortly. For the time being, we recommend reading in the ``CIFAR-10`` test set without shuffling, and swapping in our labels for the corresponding examples (i.e., the example index key in the `json` files). 
+* `process_data.ipynb`: notebook illustrating how raw data is parsed (converting `raw_human_data.csv` to `human_soft_label_data.json`).
 
 ## Constructing Soft Labels
 

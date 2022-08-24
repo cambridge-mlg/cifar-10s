@@ -60,4 +60,4 @@ If you use our data, please consider the following bibtex entry:
 
 ## Questions?
 
-If you have any questions about `CIFAR-10S` use, elicitation, and/or creation, please feel free to reach out to Katie Colling (`kmc61@cam.ac.uk`).
+If you have any questions about `CIFAR-10S` use, elicitation, and/or creation, please feel free to reach out to Katie Collins (`kmc61@cam.ac.uk`).

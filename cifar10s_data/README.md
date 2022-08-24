@@ -5,23 +5,32 @@ We introduce `CIFAR-10S`, a dataset of soft labels elicited from individual anno
 ## Repository Contents
 
 * `human_soft_label_data.json`: parsed soft label elicitation data for all annotators. 
-* `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
-* `soft_labels_redist_01.npy`: ..... redist 0.1
-* `label_construction_utils.py`: .... 
-* We will include a custom dataloader shortly. For the time being, we recommend... 
+* * `raw_human_data.csv`: de-anonymized raw annotation information collected during crowdsourcing on [Prolific](https://app.prolific.co/). [Pavlovia](https://pavlovia.org/) was used as a backend. Details on column information are included below. 
+* `cifar10s_t2clamp_redist10.json`: soft labels per individual annotator, and per example, of the `T2 Clamp` variety. Constructed with 10% redistribution.
+* `construct_labels.ipynb`: example script to construct soft labels from elicited information. 
+* `label_construction_utils.py`: helper functions to construct soft labels.
+* We will include a custom dataloader shortly. For the time being, we recommend reading in the ``CIFAR-10`` test set without shuffling, and swapping in our labels for the corresponding examples (i.e., the example index key in the `json` files). 
 
 ## Constructing Soft Labels
 
-We recommend...... 
+As discussed in our [paper](https://arxiv.org/pdf/2207.00810.pdf), there are several forms of soft labels that can be constructed from our data (see Section 4.2 and Fig. 2). The label format that includes all information elicited from humans is: "Top 2, Clamp" (``T2 Clamp``). We recommend the use of this form of soft labels. 
 
-Format of `human_soft_label_data.json` is a dictionary where: 
+`T2 Clamp` labels for each annotator are included in `cifar10s_t2clamp_redist10.json`, which is a dictionary where: 
 * Keys are the example/image indexes (based on the ordered [CIFAR-10 test set](https://www.cs.toronto.edu/~kriz/cifar.html)).
 * Values are annotators' processed soft label information for said example, in a list.
-* An individual annotator's information itself is a dictionary, with keys: "Most Probable Class", "Most Probable Class Prob", "Second Most Probable Class", "Second Most Probable Class Prob", "Impossible Class(es)"
+* Individual annotators' soft labels are included as lists, which can then be converted to numpy arrays and/or Tensors.
+
+If you wish to apply the aggregation method used in the paper, you can take the mean of the labels per example. 
+
+Note, as discussed in the paper, there is a free redistribution parameter (gamma) that determines how much mass should be spread over labels deemed possible, even if all mass has already been allocated. For instance, if an annotator allocates 80% probability to deer and 20% to horse, but doesn't select dog as impossible, this implies dog is also possible. How much mass should be allocated? We find in cross-validation that redist = 10% is best, so have used that here. If you would like to vary the redistribution amount, you may generate new labels with `construct_labels.ipynb`. 
+
+If you wish to construct soft labels using a different label variety, you may run the `construct_labels.ipynb` script (see details in documentation). 
+
+Alternatively, we provide a lightly processed version of the data elicited so you may create soft labels of any variety. This can be found in `human_soft_label_data.json`. The format follows `cifar10s_t2clamp_redist10.json`, but now, individual annotator's information itself is a dictionary, with keys: "Most Probable Class", "Most Probable Class Prob", "Second Most Probable Class", "Second Most Probable Class Prob", "Impossible Class(es)".
 
 ## Raw Data Format
 
-The columns in our raw_data represent: 
+The columns in our raw_data (`raw_human_data.csv`) represent: 
 * subject: unique id randomly generated for a given annotator.
 * response: annotations provided for a given image (most prob class w/ prob, second prob class w/ optional prob, any impossible classes). note, the final page shown to each annotator was a debrief questionarre; for this page, you can see comments to the questions included below. 
 * img_id: integer into the original CIFAR-10 ordered test set for the image show.
@@ -35,8 +44,6 @@ The columns in our raw_data represent:
 * trial_type: the [jsPsych](https://www.jspsych.org/6.3/) screen-type shown on a given page.
 * view_history: meta-data on annotator viewing instructions.
 
-
-
 ## Citing
 
 If you use our data, please consider the following bibtex entry: 
@@ -49,3 +56,7 @@ If you use our data, please consider the following bibtex entry:
   year={2022}
 }
 ```
+
+## Questions?
+
+If you have any questions about `CIFAR-10S` use, elicitation, and/or creation, please feel free to reach out to Katie Colling (`kmc61@cam.ac.uk`).

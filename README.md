@@ -31,10 +31,11 @@ Code to run the experiments included in the paper will be added shortly.
 If citing us, please consider the following bibtex entry: 
 
 ```
-@article{softLabelElicitingLearning2022,
+@inproceedings{softLabelElicitingLearning2022,
   title={Eliciting and Learning with Soft Labels from Every Annotator},
   author={Collins, Katherine M and Bhatt, Umang and Weller, Adrian},
-  journal={arXiv preprint arXiv:2207.00810},
+  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing},
+  volume={10},
   year={2022}
 }
 ```

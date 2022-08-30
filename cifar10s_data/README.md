@@ -53,7 +53,7 @@ If you use our data, please consider the following bibtex entry:
 @inproceedings{softLabelElicitingLearning2022,
   title={Eliciting and Learning with Soft Labels from Every Annotator},
   author={Collins, Katherine M and Bhatt, Umang and Weller, Adrian},
-  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing},
+  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing (HCOMP)},
   volume={10},
   year={2022}
 }

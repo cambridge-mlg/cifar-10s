@@ -50,10 +50,11 @@ The columns in our raw_data (`raw_human_data.csv`) represent:
 If you use our data, please consider the following bibtex entry: 
 
 ```
-@article{softLabelElicitingLearning2022,
+@inproceedings{softLabelElicitingLearning2022,
   title={Eliciting and Learning with Soft Labels from Every Annotator},
   author={Collins, Katherine M and Bhatt, Umang and Weller, Adrian},
-  journal={arXiv preprint arXiv:2207.00810},
+  booktitle={Proceedings of the AAAI Conference on Human Computation and Crowdsourcing},
+  volume={10},
   year={2022}
 }
 ```

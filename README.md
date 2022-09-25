@@ -28,7 +28,7 @@ Code to run the computational experiments is included in the `computational expe
 
 ### Human Elicitation Interface
 
-We include details of the elicitation interface in `elicitation_interface` directory. Note, this directory could be readily uploaded to form a new Pavlovia project (which naturally integrates with GitLab). Altnernatively, you could download the directory and host an experimental interface/server locally. 
+We include details of the elicitation interface in `elicitation_interface` directory. Note, this directory could be readily uploaded to form a new [Pavlovia](https://pavlovia.org/) project (which naturally integrates with GitLab). Altnernatively, you could download the directory and host an experimental interface/server locally. 
 
 ## Citing
 

@@ -1,6 +1,5 @@
 
 
-from cifar10s_data.label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, create_smoothed_label
 from scipy.stats import entropy, beta
 import random
 import pickle
@@ -17,11 +16,11 @@ from typing import List
 from turtle import home
 from shutil import unregister_archive_format
 from cProfile import label
+# path modification help from: https://stackoverflow.com/questions/24868733/how-to-access-a-module-from-outside-your-file-folder-in-python
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join('..', 'cifar10s')))
-
-# path modification help from: https://stackoverflow.com/questions/24868733/how-to-access-a-module-from-outside-your-file-folder-in-python
+from cifar10s_data.label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, create_smoothed_label
 
 
 class CIFAR10_SHO(Dataset):

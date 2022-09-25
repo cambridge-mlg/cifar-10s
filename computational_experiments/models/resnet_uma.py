@@ -132,3 +132,7 @@ class AvgPoolPadding(nn.Module):
         out = F.pad(x, (0, 0, 0, 0, 0, self.num_zeros))
         out = self.identity(out)
         return out
+
+
+def ResNet34A():
+    return ResNet(res_option="A")

@@ -22,9 +22,13 @@ The `CIFAR-10S` dataset is included in the `cifar10s_data` directory. Details ar
 
 We download the `CIFAR-10H` data from the authors' fantastic [repository](https://github.com/jcpeterson/cifar-10h). 
 
-### Experimental Data
+### Computational Experiments
 
-Code to run the experiments included in the paper will be added shortly.
+Code to run the computational experiments is included in the `computational experiments` directory.
+
+### Human Elicitation Interface
+
+We include details of the elicitation interface in `elicitation_interface` directory. Note, this directory could be readily uploaded to form a new Pavlovia project (which naturally integrates with GitLab). Altnernatively, you could download the directory and host an experimental interface/server locally. 
 
 ## Citing
 
@@ -40,4 +44,6 @@ If citing us, please consider the following bibtex entry:
 }
 ```
 
+## Questions? 
 
+If you have any questions or issues with any aspect of our repository, please feel free to instantiate a GitHub Issue, or reach out to us at kmc61@cam.ac.uk

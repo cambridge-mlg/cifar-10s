@@ -1,12 +1,3 @@
-'''
-House data loaders
-- cifar10h
-- cifar10 (test) + our augmentations
-- cifar10 (test) + our augmentations + modified vanilla mixup (?)
-- cifar10h + our augmentations (?)
-Note: specify data loaders to have varied number of samples
-(against baseline of just cifar10, test set to match cifar10h)
-'''
 
 # create custom dataloaders in pytorch help from: https://pytorch.org/tutorials/beginner/data_loading_tutorial.html
 from cProfile import label
@@ -25,21 +16,8 @@ import json
 import torch.nn.functional as F
 import pickle
 import random
-from label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, get_semantic_sim_matrix
+from label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, create_smoothed_label
 from scipy.stats import entropy, beta
-
-
-def create_smoothed_label(hard_label_class, num_classes=10, smoothing_factor=0.1):
-    '''
-    Construct a smoothed label from a provided hard label class
-    '''
-    hard_label = np.zeros([num_classes])
-    hard_label[hard_label_class] = 1.0
-    # smoothed_label = np.ones([self.num_classes]) * (ls_alpha/(self.num_classes - 1)) # apply smoother to all classes which are not the hard label class
-    # smoothed_label[hard_label] = 1.0 * (1-ls_alpha)
-    smoothed_label = hard_label * \
-        (1-smoothing_factor) + np.ones([num_classes]) * smoothing_factor
-    return smoothed_label
 
 
 class CIFAR10_SHO(Dataset):

@@ -8,7 +8,7 @@ Katherine M. Collins*, Umang Bhatt*, and Adrian Weller
 
 Paper: https://arxiv.org/abs/2207.00810 
 
-Project Page: TBD
+Project Page: https://sites.google.com/view/eliciting-individ-soft-labels
 
 ## Abstract
 
@@ -24,7 +24,7 @@ We download the `CIFAR-10H` data from the authors' fantastic [repository](https:
 
 ### Computational Experiments
 
-Code to run the computational experiments is included in the `computational experiments` directory.
+Code to run the computational experiments is included in the `computational_experiments` directory.
 
 ### Human Elicitation Interface
 

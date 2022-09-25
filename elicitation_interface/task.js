@@ -99,7 +99,7 @@ var instructions = {
 	type: "instructions",
 	pages: ['<p> Welcome! </p> <p> We are conducting an experiment about how people express uncertainty over images. Your answers will be used to inform machine learning and human-computer interaction work. </p>' +
 	'<p> This experiment should take at most <strong>25 minutes</strong>. </br></br> You will be compensated at a base rate of $8/hour for a total of <strong>$3.34</strong>, which you will receive as long as you complete the study.</p>',
-			'<p> We take your compensation and time seriously! The email for the main experimenter is <strong>cambridge.mlg.studies@gmail.com</strong>. </br></br> Please write this down now, and email us with your Prolific ID and the subject line <i>Human experiment compensation</i> if you have problems submitting this task, or if it takes much more time than expected. </p>',
+			'<p> We take your compensation and time seriously! The email for the main experimenter is <strong>ADD YOUR EMAIL</strong>. </br></br> Please write this down now, and email us with your Prolific ID and the subject line <i>Human experiment compensation</i> if you have problems submitting this task, or if it takes much more time than expected. </p>',
 			'<p> In this experiment, you will be seeing <i>images</i> of objects.</p>'+
 			'<p> Each image depicts an instance of some <i>category</i>, e.g., a dog, a truck, an airplane.</p>' +
       '<p> You will have <strong>multiple tasks per image</strong>, including coming up with the most probable, second most probable, and improbable categories for the image. Along with associated estimates of the probabilities of those categories being the correct category of the image. </p>',

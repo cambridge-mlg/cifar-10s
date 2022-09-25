@@ -1,23 +1,27 @@
 
-# create custom dataloaders in pytorch help from: https://pytorch.org/tutorials/beginner/data_loading_tutorial.html
-from cProfile import label
-from shutil import unregister_archive_format
-from turtle import home
-from typing import List
-import numpy as np
-import torch
-import os
-import pandas as pd
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms, utils
-import torchvision.datasets as datasets
-from torch.autograd import Variable
-import json
-import torch.nn.functional as F
-import pickle
-import random
-from label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, create_smoothed_label
+
+from cifar10s_data.label_construction_utils import construct_elicited_soft_label, create_cifar10h_sim2, create_smoothed_label
 from scipy.stats import entropy, beta
+import random
+import pickle
+import torch.nn.functional as F
+import json
+from torch.autograd import Variable
+import torchvision.datasets as datasets
+from torchvision import transforms, utils
+from torch.utils.data import Dataset, DataLoader
+import pandas as pd
+import torch
+import numpy as np
+from typing import List
+from turtle import home
+from shutil import unregister_archive_format
+from cProfile import label
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join('..', 'cifar10s')))
+
+# path modification help from: https://stackoverflow.com/questions/24868733/how-to-access-a-module-from-outside-your-file-folder-in-python
 
 
 class CIFAR10_SHO(Dataset):
@@ -319,4 +323,5 @@ class CIFAR10_SHO(Dataset):
         # note: we used np.float32 for the results reported in the paper --- but change in the release to float64 for stability
         label = torch.FloatTensor(label.detach().numpy().astype(np.float64))
 
+        return (img, label)
         return (img, label)

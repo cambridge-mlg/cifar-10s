@@ -29,9 +29,9 @@ parser = argparse.ArgumentParser(description='Run evaluation')
 parser.add_argument('--run_name', default='0', type=str, help='name of run')
 parser.add_argument('--split_seed', default=7, type=int,
                     help='seed for the validation split')
-parser.add_argument('--checkpoint_dir', default='./sim_annotator_uncertainty/',
+parser.add_argument('--checkpoint_dir', default='./checkpoints/',
                     help='directory where checkpoints were saved during training')
-parser.add_argument('--eval_stats_dir', default='./sim_annotator_eval_stats/')
+parser.add_argument('--eval_stats_dir', default='./eval_stats/')
 parser.add_argument('--eval_set', default='val', help='dataset to evaluate on')
 parser.add_argument('--n_eval_adv_robustness', default=1000, type=int,
                     help='number of examples over to run for adversarial robustness checks')

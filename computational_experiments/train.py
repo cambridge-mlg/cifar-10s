@@ -1,6 +1,31 @@
 '''
 Training script to for models running various kinds of soft labels (CIFAR-10H vs. CIFAR-10S), as well as the original one-hot labels
-Note, the base structure of this code, and some auxillary functions, are modified from the original mixup repo: https://github.com/facebookresearch/mixup-cifar10
+
+"Label_method" is where you should specify the kind of data/labels you want to use. Some examples:
+- oursTop2Clamp: use CIFAR-10S w/ top 2, and include clamp
+- oursTop2Uniform: use CIFAR-10S top 2, and no clamp
+- oursTop1Clamp: use CIFAR-10S w/ only top 1 most probable, and include clamp
+- oursTop2Clamp: use CIFAR-10S w/ only top 1 most probable, and no clamp
+- cifar10h: original CIFAR-10H data
+- baseline: use the original hard labels from CIFAR-10 (one-hot)
+- labelSmooth: replace with smoothed versions of the original CIFAR-10 (one-hot)
+- random: generate random probabilistic labels (sum to 1)
+- uniform: place 1/K (K=10) prob mass per category
+Note, the above label transformations are applied over the examples we have CIFAR-10S labels for
+    To ensure parity of comparisons
+The other examples are labeled with the original CIFAR-10 hard labels
+    This can be overriden, and use CIFAR-10H labels for the entire set using "use_all_cifar10h"
+
+
+To use the per-annotator/de-aggregate setting described in our HCOMP paper
+    Append "PerAnnotator" to the end of the label_method string
+    e.g., "oursTop2ClampPerAnnotator"
+To apply label smoothing ontop of CIFAR-10S or CIFAR-10H
+    Append "Smooth" to the end of the label_method string
+    If using with "PerAnnotator", this would be: "oursTop2ClampSmoothPerAnnotator"
+
+Citations:
+The base structure of this code, and some auxillary functions, are modified from the original mixup repo: https://github.com/facebookresearch/mixup-cifar10
 And the runtime parameters are also from Uma et al: https://github.com/AlexandraUma/dali-learning-with-disagreement
 CIFAR-10H data is from: https://github.com/jcpeterson/cifar-10h
 '''
@@ -42,15 +67,15 @@ parser.add_argument('--no-augment', dest='augment', action='store_false',
                     help='use standard augmentation (default: True)')
 parser.add_argument('--decay', default=1e-4, type=float, help='weight decay')
 parser.add_argument('--download', action="store_true")
-parser.add_argument('--checkpoint_dir', default='./sim_annotator_uncertainty/')
+parser.add_argument('--checkpoint_dir', default='./checkpoints/')
 parser.add_argument('--training_stats_dir',
-                    default='./sim_annotator_training_stats/')
-parser.add_argument('--label_method', default='cifar10h',
-                    type=str, help='type of relabeling')
+                    default='./training_stats/')
+parser.add_argument('--label_method', default='oursTop2Clamp',
+                    type=str, help='type of labeling to apply to the')
 parser.add_argument('--use_all_cifar10h', action="store_true")
 parser.add_argument('--use_early_stopping', action="store_true")
 parser.add_argument('--original_cifar10_trainset', action="store_true",
-                    help="run training over original cifar10 set instead, not peterson")
+                    help="run training over original cifar10 set instead, not cifar10h")
 parser.add_argument('--num_annotators_sample', default=-1, type=int,
                     help='subsample number of annotators. -1 means use all the annotators (no downsampling)')
 parser.add_argument('--annotator_subsample_seed', default=0, type=int,

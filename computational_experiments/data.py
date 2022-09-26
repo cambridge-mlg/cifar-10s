@@ -31,7 +31,7 @@ class CIFAR10_SHO(Dataset):
     """
 
     def __init__(self, cifar10h_data_pth="../other_data/cifar10h-counts.npy", img_dir='../other_data',
-                 transform=None, split_idx_pth="./other_data/", split="train",
+                 transform=None, split_idx_pth="../other_data/", split="train",
                  label_method="cifar10h", cifar10s_data_pth="../cifar10s_data/human_soft_labels_data.json",
                  use_all_cifar10h=False, num_annotators_sample=-1, annotator_subsample_seed=0,
                  redist_level=0.1, data_split_seed=7, num_examples_holdout=100,

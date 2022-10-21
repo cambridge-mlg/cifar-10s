@@ -153,7 +153,7 @@ class CIFAR10_SHO(Dataset):
                     if "Smooth" in label_method:
                         annotator_label = annotator_label * \
                             (1-ls_smooth_amt) + \
-                            np.ones([self.num_classes]) * ls_smooth_amt
+                            np.ones([self.num_classes]) * ((1/self.num_classes) * ls_smooth_amt)
                     annotator_labels.append(annotator_label)
                 annotator_labels = np.array(annotator_labels)
                 label = np.mean(annotator_labels, axis=0)

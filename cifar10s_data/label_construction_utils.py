@@ -213,5 +213,5 @@ def create_smoothed_label(hard_label_class, num_classes=10, smoothing_factor=0.1
     # smoothed_label = np.ones([self.num_classes]) * (ls_alpha/(self.num_classes - 1)) # apply smoother to all classes which are not the hard label class
     # smoothed_label[hard_label] = 1.0 * (1-ls_alpha)
     smoothed_label = hard_label * \
-        (1-smoothing_factor) + np.ones([num_classes]) * smoothing_factor
+        (1-smoothing_factor) + np.ones([num_classes]) * ((1/num_classes)*smoothing_factor)
     return smoothed_label
